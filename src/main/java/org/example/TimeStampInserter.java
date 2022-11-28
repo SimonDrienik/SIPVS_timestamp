@@ -30,9 +30,9 @@ public class TimeStampInserter {
     public TimeStampInserter() throws ParserConfigurationException, IOException, SAXException, TransformerConfigurationException, TransformerException {
     }
 
-    public static void doTimeStamp() throws ParserConfigurationException, IOException, SAXException {
+    public static void doTimeStamp() throws ParserConfigurationException, IOException, SAXException, TransformerException {
 
-        File xmlFile = new File("students.xml");
+        File xmlFile = new File("src/main/resources/response_2.xml");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(xmlFile);
@@ -75,9 +75,9 @@ public class TimeStampInserter {
 
 
 
-    static public String getTimeStamp(String xmlData) {
-        TimeStamp TimeClient = new TimeStamp();
-        String timeStampString = TimeClient.getTS(xmlData);
+    static public String getTimeStamp(String xmlData) throws ParserConfigurationException, IOException, TransformerException, SAXException {
+        TimeStampGetter timeStampGetter = new TimeStampGetter();
+        String timeStampString = timeStampGetter.getTS(xmlData);
         return timeStampString;
     }
 }
